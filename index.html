@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>INCENT Team</title>
+  <link rel="icon" href="image/incent_logo.png" type="image/gif" sizes="16x16">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+ 
+ <script type="text/javascript">
+$(function(){
+	$("#letter").click(function(){
+		$("#my_letter").load("./file.txt");
+			$("#my_letter").toggle("slow");
+	});
+});
+  </script>
+<script>
+function startTime() {
+		//Getting Time
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+
+       //Getting Date
+    var YY=1900+today.getYear(YY);
+    var MM=1+today.getMonth();
+    var DD=today.getDate();
+    var day=1+today.getDay();
+    MM=checkmonth(MM);
+
+    	//Changing Day to Week
+    switch(day){
+    	case 1:
+    		day="Sunday"
+    	break;
+    	case 2:
+    		day="Monday"
+    	break;
+    	case 3:
+    		day="Tuesday"
+    	break;
+    	case 4:
+    		day="Wednesday"
+    	break;
+    	case 5:
+    		day="Thrusday"
+    	break;
+    	case 6:
+    		day="Friday"
+    	break;
+    	case 7:
+    		day="Saturday"
+    	break;
+    	}
+    	//Displaying date
+    var my_date=YY+ "/" +MM+ "/" +DD+ "-" +day;
+   document.getElementById('txt').innerHTML =my_date;
+   	var t = setTimeout(startTime, 500);
+
+   		//displaying time
+    var my_time= h + ":" + m + ":" + s;
+    document.getElementById('txt1').innerHTML =my_time;
+    var t = setTimeout(startTime, 500);
+
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+function checkmonth(MM) {
+    if (MM < 10) {MM = "0" + MM};  // add zero in front of numbers < 10
+    return MM;
+}
+</script>
+</head>
+<body onload="startTime()">
+<div class="container-fluid">
+<div id="txt"></div><div id="txt1"></div>
+<h1>My Life......</h1>
+<form action="php/submit.php">
+	<textarea rows="10" cols="100" id="text_area">
+	At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+	</textarea>
+	<br>
+	<button type="submit" class="btn btn-default" value="Submit">APPROVE</button>
+</form>
+<br>
+<br>
+<button id="letter" class="btn btn-default">Letter for You</button>
+<div id="my_letter">YOU ARE AWESOME. BELIVE YOURSELF.</div>
+</div>
+    <i><p class="font-italic" id="footer">we believe in INNOVATION and CREATION for DEVELOPMENT. (INCENT Team)</p></i>
+</body>
+</html>
